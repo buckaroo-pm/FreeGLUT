@@ -1,6 +1,5 @@
 targets = [ "//freeglut/freeglut:freeglut" ]
 
-
 [[dependency]]
 package = "github.com/buckaroo-pm/host-opengl"
 version = "branch=master"
