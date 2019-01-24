@@ -9,6 +9,11 @@ addons:
     packages:
       - g++-6
       - gcc-6
+      - xvfb
+      - libxcursor-dev 
+      - libxrandr-dev 
+      - libxinerama-dev 
+      - libxi-dev
   homebrew:
     taps:
       - facebook/fb
