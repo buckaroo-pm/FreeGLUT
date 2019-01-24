@@ -1,0 +1,25 @@
+manifest = "98d61ef0e121d9212c13560c22ca60b1130692a29898ed0877e8fd142d56718b"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/host-opengl"
+target = "//:opengl"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/pkg-config-gl"
+target = "//:gl"
+
+[[dependency]]
+package = "github.com/buckaroo-pm/pkg-config-x11"
+target = "//:x11"
+
+[lock."github.com/buckaroo-pm/host-opengl"]
+versions = [ "branch=master" ]
+revision = "183de5e5057c37c69dc5d298781b3c131a3688e4"
+
+[lock."github.com/buckaroo-pm/pkg-config-gl"]
+versions = [ "branch=master" ]
+revision = "c8734a6884d0aaa713c059673a103fe58de08084"
+
+[lock."github.com/buckaroo-pm/pkg-config-x11"]
+versions = [ "branch=master" ]
+revision = "6f292a6166cd3c45c776b294485a24e7d71c0e0c"

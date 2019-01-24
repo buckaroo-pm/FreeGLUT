@@ -1,0 +1,9 @@
+cxx_binary(
+  name = 'Fractals',
+  srcs = [
+    'fractals.c',
+  ],
+  deps = [
+    '//freeglut/freeglut:freeglut',
+  ],
+)

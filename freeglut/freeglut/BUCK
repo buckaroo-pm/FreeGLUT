@@ -1,0 +1,58 @@
+load('//:subdir_glob.bzl', 'subdir_glob')
+load('//:buckaroo_macros.bzl', 'buckaroo_deps_from_package')
+
+pkg_config_gl = \
+  buckaroo_deps_from_package('github.com/buckaroo-pm/pkg-config-gl')
+
+pkg_config_x11 = \
+  buckaroo_deps_from_package('github.com/buckaroo-pm/pkg-config-x11')
+
+host_opengl = \
+  buckaroo_deps_from_package('github.com/buckaroo-pm/host-opengl')
+
+android_srcs = glob([
+  'src/android/*.c',
+])
+
+windows_srcs = glob([
+  'src/mswin/*.c',
+])
+
+wayland_srcs = glob([
+  'src/wayland/*.c',
+])
+
+x11_srcs = glob([
+  'src/x11/*.c',
+])
+
+linux_srcs = x11_srcs
+
+cxx_library(
+  name = 'freeglut',
+  header_namespace = '',
+  exported_headers = subdir_glob([
+    ('include', '**/*.h'),
+  ]),
+  headers = subdir_glob([
+    ('src', '**/*.h'),
+  ]),
+  srcs = glob([
+    'src/*.c',
+    'src/util/*.c',
+  ], exclude = [
+    'src/gles_stubs.c',
+  ]),
+  platform_srcs = [
+    ('linux.*', linux_srcs),
+    ('android.*', android_srcs),
+    ('windows.*', windows_srcs),
+  ],
+  platform_deps = [
+    ('linux.*', pkg_config_gl + pkg_config_x11),
+    ('macos.*', host_opengl),
+  ],
+  visibility = [
+    'PUBLIC',
+  ],
+)
